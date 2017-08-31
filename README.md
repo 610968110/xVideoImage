@@ -33,7 +33,7 @@ new ImageBuilder().setCatchType(ImageBuilder.CatchType.MemoryAndFile)<br>
         });<br><br>
 2.设置图片：<br><br>
 
-				//初始化图片显示设置<br>
+				//初始化图片显示设置
 				mOptions = new Options()//图片设置参数 
                 .setScaleType(ImageView.ScaleType.CENTER)//居中显示 
                 .setStyle(Options.BitmapStyle.NO_COLOR);//黑白照片效果 
@@ -45,7 +45,7 @@ new ImageBuilder().setCatchType(ImageBuilder.CatchType.MemoryAndFile)<br>
 
 
 
-        //根据filepath设置<br>
+        //根据filepath设置
 //        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/bda303a6ef804f73bd306bbbb508653f";<br>
 //        mVideoImageLoader.displayDisc(holder.imageView, path);<br><br><br>
 
@@ -62,7 +62,7 @@ new ImageBuilder().setCatchType(ImageBuilder.CatchType.MemoryAndFile)<br>
             public void errorLoad(View view) {
                 //设置失败回调
             }
-            @Override<br>
+            @Override
             public void setErrorImgFinish(View view, Bitmap bitmap, int errId) {
                 //设置成预先定义好的errImage的回调
             }
