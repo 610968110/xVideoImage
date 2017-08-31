@@ -1,11 +1,12 @@
 package lbx.xvideoimagelib.utils;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Process;
 
 public class UIUtils {
 
-    private static Handler mHandler = new Handler();
+    private static Handler mHandler = new Handler(Looper.getMainLooper());
 
     // /////////////////判断是否运行在主线程//////////////////////////
     public static boolean isRunOnUIThread() {
@@ -23,13 +24,13 @@ public class UIUtils {
 
     // 运行在主线程
     public static void runOnUIThread(Runnable r) {
-        if (isRunOnUIThread()) {
-            // 已经是主线程, 直接运行
-            r.run();
-        } else {
+//        if (isRunOnUIThread()) {
+//            // 已经是主线程, 直接运行
+//            r.run();
+//        } else {
             // 如果是子线程, 借助handler让其运行在主线程
             mHandler.post(r);
-        }
+//        }
     }
 
     // 运行在子线程
