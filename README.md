@@ -18,19 +18,19 @@ new ImageBuilder().setCatchType(ImageBuilder.CatchType.MemoryAndFile)<br>
 
 //        mVideoImageLoader = VideoImageLoader.getDefault(this);//默认的VideoImageLoader<br>
         mVideoImageLoader = new VideoImageLoader(this, getBuilder());<br>
-        mVideoImageLoader.setOnImgDownloadFinish(new VideoImageLoader.OnImgDownloadFinish() {<br>
+        mVideoImageLoader.setOnImgDownloadFinish(new VideoImageLoader.OnImgDownloadFinish() {
             @Override
-            public void imgDownloadFinish(String url, Bitmap b) {<br>
+            public void imgDownloadFinish(String url, Bitmap b) {
                 //当第一次下载图片成功时调用，运行在主线程<br>
-                if (mAdapter != null)<br>
-                    mAdapter.notifyDataSetChanged();<br>
+                if (mAdapter != null)
+                    mAdapter.notifyDataSetChanged();
             }<br><br>
 
             @Override
-            public void imgDownloadErr(String err) {<br>
-                //当第一次下载图片失败时调用，运行在主线程<br>
-            }<br>
-        });<br><br>
+            public void imgDownloadErr(String err) {
+                //当第一次下载图片失败时调用，运行在主线程
+            }
+        });
 2.设置图片：<br><br>
 
 				//初始化图片显示设置
