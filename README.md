@@ -1,8 +1,8 @@
 # xVideoImage
-xVideoImage\<br>\<br>
+xVideoImage<br><br>
 
 一、需要权限：\<br>
-	<uses-permission android:name="android.permission.INTERNET" />\<br>
+	<uses-permission android:name="android.permission.INTERNET" /><br>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />\<br>\<br>\<br>
 二、引入库：\<br>
 	compile 'com.lbx:xVideoImage:1.0.0'\<br>
