@@ -10,44 +10,44 @@ xVideoImage<br><br>
 
 1、初始化VideoImageLoader：<br><br>
 
-new ImageBuilder().setCatchType(ImageBuilder.CatchType.MemoryAndFile)<br>
-                .setImgErrorId(R.mipmap.ic_launcher)//图片加载失败时设置成的errImage<br>
-                .setImgSize(200, 200)//设置图片的宽高<br>
-                .setPath(getCachePath())//设置缓存路径<br>
-                .setThreadNum(3);//设置线程数量<br>
+	new ImageBuilder().setCatchType(ImageBuilder.CatchType.MemoryAndFile)
+                .setImgErrorId(R.mipmap.ic_launcher)//图片加载失败时设置成的errImage
+                .setImgSize(200, 200)//设置图片的宽高
+                .setPath(getCachePath())//设置缓存路径
+                .setThreadNum(3);//设置线程数量
 
-//        mVideoImageLoader = VideoImageLoader.getDefault(this);//默认的VideoImageLoader<br>
-        mVideoImageLoader = new VideoImageLoader(this, getBuilder());<br>
-        mVideoImageLoader.setOnImgDownloadFinish(new VideoImageLoader.OnImgDownloadFinish() {<br>
-            @Override  <br>
-            public void imgDownloadFinish(String url, Bitmap b) {<br>
-                //当第一次下载图片成功时调用，运行在主线程<br>
-                if (mAdapter != null)<br>
-                    mAdapter.notifyDataSetChanged();<br>
-            }<br><br>
+	//        mVideoImageLoader = VideoImageLoader.getDefault(this);//默认的VideoImageLoader
+       		 mVideoImageLoader = new VideoImageLoader(this, getBuilder());
+        	mVideoImageLoader.setOnImgDownloadFinish(new VideoImageLoader.OnImgDownloadFinish() {
+           	 @Override  <br>
+           	 public void imgDownloadFinish(String url, Bitmap b) {
+               	 //当第一次下载图片成功时调用，运行在主线程
+                	if (mAdapter != null)<br>
+                   	 mAdapter.notifyDataSetChanged();
+           	 }
 
-            @Override<br>
-            public void imgDownloadErr(String err) {<br>
-                //当第一次下载图片失败时调用，运行在主线程<br>
-            }<br>
-        });<br>
-2.设置图片：<br><br>
+           	 @Override
+           	 public void imgDownloadErr(String err) {
+              	  //当第一次下载图片失败时调用，运行在主线程
+           	 }
+       		});
+2.设置图片：<br>
 
-				//初始化图片显示设置
-				mOptions = new Options()//图片设置参数 
+		//初始化图片显示设置
+		mOptions = new Options()//图片设置参数 
                 .setScaleType(ImageView.ScaleType.CENTER)//居中显示 
                 .setStyle(Options.BitmapStyle.NO_COLOR);//黑白照片效果 
 
 
- //根据bitmap设置<br>
-//        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/bda303a6ef804f73bd306bbbb508653f";<br>
-//        mVideoImageLoader.displayBitmap(holder.imageView, BitmapFactory.decodeFile(path));<br><br><br><br>
+ 	  //根据bitmap设置<br>
+          //String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/bda303a6ef804f73bd306bbbb508653f";<br>
+          //mVideoImageLoader.displayBitmap(holder.imageView, BitmapFactory.decodeFile(path));<br><br><br><br>
 
 
 
         //根据filepath设置
-//        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/bda303a6ef804f73bd306bbbb508653f";<br>
-//        mVideoImageLoader.displayDisc(holder.imageView, path);<br><br><br>
+        //String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/bda303a6ef804f73bd306bbbb508653f";<br>
+        //mVideoImageLoader.displayDisc(holder.imageView, path);<br><br><br>
 
 
 
