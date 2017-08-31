@@ -34,9 +34,9 @@ new ImageBuilder().setCatchType(ImageBuilder.CatchType.MemoryAndFile)<br>
 2.设置图片：<br><br>
 
 				//初始化图片显示设置<br>
-				mOptions = new Options()//图片设置参数<br>
-                .setScaleType(ImageView.ScaleType.CENTER)//居中显示<br>
-                .setStyle(Options.BitmapStyle.NO_COLOR);//黑白照片效果<br>
+				mOptions = new Options()//图片设置参数 
+                .setScaleType(ImageView.ScaleType.CENTER)//居中显示 
+                .setStyle(Options.BitmapStyle.NO_COLOR);//黑白照片效果 
 
 
  //根据bitmap设置<br>
@@ -51,23 +51,22 @@ new ImageBuilder().setCatchType(ImageBuilder.CatchType.MemoryAndFile)<br>
 
 
 
-        //根据url设置<br>
-        mVideoImageLoader.displayUrl(holder.imageView, s, new VideoImageLoader.OnImgSetCallback() {<br>
-            @Override<br>
-            public void success(View view, Bitmap bitmap) {<br>
-                //设置成功回调<br>
-            }<br>
+        //根据url设置
+        mVideoImageLoader.displayUrl(holder.imageView, s, new VideoImageLoader.OnImgSetCallback() {
+            @Override
+            public void success(View view, Bitmap bitmap) {
+                //设置成功回调
+            }
 
+            @Override
+            public void errorLoad(View view) {
+                //设置失败回调
+            }
             @Override<br>
-            public void errorLoad(View view) {<br>
-                //设置失败回调\<br>
-            }<br>
-
-            @Override<br>
-            public void setErrorImgFinish(View view, Bitmap bitmap, int errId) {<br>
-                //设置成预先定义好的errImage的回调<br>
-            }<br>
-        }, mOptions);//设置图片显示属性		<br>
+            public void setErrorImgFinish(View view, Bitmap bitmap, int errId) {
+                //设置成预先定义好的errImage的回调
+            }
+        }, mOptions);//设置图片显示属性		
 		
 		
 		
