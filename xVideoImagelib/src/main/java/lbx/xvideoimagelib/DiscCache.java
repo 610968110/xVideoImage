@@ -17,9 +17,9 @@ public class DiscCache implements ImgCache {
 
     private String path;
     private ImageBuilder builder;
-    private ImageLoader imageLoader;
+    private VideoImageLoader imageLoader;
 
-    public DiscCache(ImageLoader imageLoader, ImageBuilder builder) {
+    public DiscCache(VideoImageLoader imageLoader, ImageBuilder builder) {
         path = builder.getPath();
         if (!path.endsWith("/"))
             path += "/";
@@ -33,7 +33,7 @@ public class DiscCache implements ImgCache {
 
     private void saveBitmapFile(String url, final Bitmap bitmap) {
         final String name = url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("."));
-        Log.e("xImageUtils",path + name);
+        Log.e("xImageUtils", path + name);
         final File file = new File(path, name);//将要保存图片的路径
         imageLoader.executorService.execute(new Runnable() {
             @Override
@@ -58,7 +58,9 @@ public class DiscCache implements ImgCache {
 
     @Override
     public Bitmap getBitmap(String url) {
-        String name = url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("."));
+        String name = url.contains(".") ?
+                url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf(".")) :
+                url.substring(url.lastIndexOf("/") + 1, url.length());
         String path = this.path + "/" + name;
         return BitmapFactory.decodeFile(path);
     }

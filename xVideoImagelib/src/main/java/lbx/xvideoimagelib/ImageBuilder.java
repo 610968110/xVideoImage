@@ -8,15 +8,15 @@ import android.os.Environment;
 
 public class ImageBuilder {
 
-    private String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ImageLoader";
+    private String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/VideoImageLoader";
     private int threadNum = Runtime.getRuntime().availableProcessors() - 1;
     private int imgWidth = 200;
     private int imgHeight = 200;
-    private CatchType catchType = CatchType.Memory_File;
+    private CatchType catchType = CatchType.MemoryAndFile;
     private int imgErrorId = -1;
 
     public enum CatchType {
-        OnlyMemory, OnlyFile, Memory_File
+        MemoryAndFile,OnlyMemory, OnlyFile
     }
 
 

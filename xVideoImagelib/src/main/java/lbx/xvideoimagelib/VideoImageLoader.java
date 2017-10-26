@@ -11,13 +11,13 @@ import android.widget.ImageView;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static lbx.xvideoimagelib.ImageLoader.PathType.VIDEO;
+import static lbx.xvideoimagelib.VideoImageLoader.PathType.VIDEO;
 
 /**
  * Created by Administrator on 2017/3/15.
  */
 
-public class ImageLoader {
+public class VideoImageLoader {
 
     private ImgCache memoryCache;
     private ImgCache sdCardCache;
@@ -31,11 +31,11 @@ public class ImageLoader {
         VIDEO, PATH
     }
 
-    public static ImageLoader getDefault(Context c) {
-        return new ImageLoader(c, new ImageBuilder());
+    public static VideoImageLoader getDefault(Context c) {
+        return new VideoImageLoader(c, new ImageBuilder());
     }
 
-    public ImageLoader(Context context, ImageBuilder builder) {
+    public VideoImageLoader(Context context, ImageBuilder builder) {
         this.context = context;
         this.builder = builder;
         this.cacheType = builder.getCatchType();
@@ -45,7 +45,7 @@ public class ImageLoader {
         downloadHelper = new DownloadHelper(this, builder);
     }
 
-    public void setBitmap(String url, Bitmap bitmap) {
+    protected void setBitmap(String url, Bitmap bitmap) {
         if (!cacheType.equals(ImageBuilder.CatchType.OnlyFile)) {
             memoryCache.setCacheBitmap(url, bitmap);
 //            LogUtils.e("memoryCache.setCacheBitmap");

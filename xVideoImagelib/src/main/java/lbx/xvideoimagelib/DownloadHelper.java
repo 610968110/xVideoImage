@@ -18,21 +18,21 @@ import lbx.xvideoimagelib.utils.UIUtils;
 
 public class DownloadHelper {
 
-    private ImageLoader imageLoader;
+    private VideoImageLoader imageLoader;
     private ImageBuilder builder;
     private Map<String, String> map = new HashMap<>();
 
-    public DownloadHelper(ImageLoader imageLoader, ImageBuilder builder) {
+    public DownloadHelper(VideoImageLoader imageLoader, ImageBuilder builder) {
         this.imageLoader = imageLoader;
         this.builder = builder;
     }
 
-    public void downloadImg(final String url, final ImageLoader.PathType type) {
+    public void downloadImg(final String url, final VideoImageLoader.PathType type) {
         synchronized (DownloadHelper.class) {
             if (!TextUtils.isEmpty(map.get(url))) {
-//            if (type == ImageLoader.PathType.VIDEO) {
+//            if (type == VideoImageLoader.PathType.VIDEO) {
 //                LogUtils.e("该任务正在下载");
-//            } else if (type == ImageLoader.PathType.PATH) {
+//            } else if (type == VideoImageLoader.PathType.PATH) {
 //                LogUtils.e("该任务正在压缩");
 //            } else {
 //                LogUtils.e("该任务正在???");
@@ -45,9 +45,9 @@ public class DownloadHelper {
                 @Override
                 public void run() {
                     Bitmap b = null;
-                    if (type == ImageLoader.PathType.VIDEO) {
+                    if (type == VideoImageLoader.PathType.VIDEO) {
                         b = getVideoImg(url);
-                    } else if (type == ImageLoader.PathType.PATH) {
+                    } else if (type == VideoImageLoader.PathType.PATH) {
                         b = getDiscImg(url);
                     }
                     map.remove(url);
