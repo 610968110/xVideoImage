@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        initxVideoImage();
+        initVideoImage();
         initData();
         initListener();
     }
@@ -33,15 +33,16 @@ public class MainActivity extends AppCompatActivity {
         lv_main = (ListView) findViewById(R.id.lv_main);
     }
 
-    private void initxVideoImage() {
+    private void initVideoImage() {
 //        mVideoImageLoader = VideoImageLoader.getDefault(this);//默认的VideoImageLoader
         mVideoImageLoader = new VideoImageLoader(this, getBuilder());
         mVideoImageLoader.setOnImgDownloadFinish(new VideoImageLoader.OnImgDownloadFinish() {
             @Override
             public void imgDownloadFinish(String url, Bitmap b) {
                 //当第一次下载图片成功时调用，运行在主线程
-                if (mAdapter != null)
+                if (mAdapter != null) {
                     mAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -66,16 +67,21 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageBuilder getBuilder() {
         return new ImageBuilder().setCatchType(ImageBuilder.CatchType.MemoryAndFile)
-                .setImgErrorId(R.mipmap.ic_launcher)//图片加载失败时设置成的errImage
-                .setImgSize(200, 200)//设置图片的宽高
-                .setPath(getCachePath())//设置缓存路径
-                .setThreadNum(3);//设置线程数量
+                //图片加载失败时设置成的errImage
+                .setImgErrorId(R.mipmap.ic_launcher)
+                //设置图片的宽高
+                .setImgSize(200, 200)
+                //设置缓存路径
+                .setPath(getCachePath())
+                //设置线程数量
+                .setThreadNum(3);
     }
 
     private String getCachePath() {
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             return Environment.getExternalStorageDirectory().getAbsolutePath();
-        else
+        } else {
             return getFilesDir().getAbsolutePath();
+        }
     }
 }

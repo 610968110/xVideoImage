@@ -28,9 +28,12 @@ public class ImageAdapter extends BaseAdapter {
         this.mList = mList;
         this.mVideoImageLoader = videoImageLoader;
         //初始化图片显示设置
-        mOptions = new Options()//图片设置参数
-                .setScaleType(ImageView.ScaleType.CENTER)//居中显示
-                .setStyle(Options.BitmapStyle.NO_COLOR);//黑白照片效果
+        //图片设置参数
+        mOptions = new Options()
+                //居中显示
+                .setScaleType(ImageView.ScaleType.CENTER)
+                //黑白照片效果
+                .setStyle(Options.BitmapStyle.NO_COLOR);
     }
 
     @Override
@@ -84,7 +87,8 @@ public class ImageAdapter extends BaseAdapter {
             public void setErrorImgFinish(View view, Bitmap bitmap, int errId) {
                 //设置成预先定义好的errImage的回调
             }
-        }, mOptions);//设置图片显示属性
+            //设置图片显示属性
+        }, mOptions);
         return convertView;
     }
 
